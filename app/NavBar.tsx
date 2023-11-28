@@ -11,6 +11,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ToggleTheme from "@/components/ToggleTheme";
 
+ 
 const NavBar = () => {
   return (
     <div className="h-[60px] bg-[var(--dark-gray)] flex items-center px-5 justify-between">
