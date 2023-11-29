@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "./NavBar";
 import { ThemeProvider } from "@/providers/themeProvider";
+import SidebarContextProvider from "@/context/sidebar-context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +21,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <NavBar />
-          <main>{children}</main>
+          <SidebarContextProvider>
+            <NavBar />
+            <main>{children}</main>
+          </SidebarContextProvider>
         </ThemeProvider>
       </body>
     </html>
