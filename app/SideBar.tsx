@@ -3,7 +3,8 @@ import { useSidebarContext } from "@/context/sidebar-context";
 
 const SideBar = () => {
   const { setSidebarOpen, sidebarOpen } = useSidebarContext();
-  return <div></div>;
+
+  return <div>{sidebarOpen ? "open" : "closed"}</div>;
 };
 
 export default SideBar;
