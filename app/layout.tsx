@@ -21,9 +21,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+         
+        >
           <SidebarContextProvider>
-            <div className="flex">
+            <div className="flex h-screen">
               <SideBar />
               <div className=" w-full">
                 <NavBar />
