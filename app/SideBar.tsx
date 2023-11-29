@@ -1,6 +1,7 @@
 "use client";
 import { useSidebarContext } from "@/context/sidebar-context";
 import classNames from "classnames";
+import Link from "next/link";
 
 const SideBar = () => {
   const { setSidebarOpen, sidebarOpen } = useSidebarContext();
@@ -14,7 +15,7 @@ const SideBar = () => {
         "w-0": !sidebarOpen,
       })}
     >
-      {sidebarOpen ? "open" : "closed"}
+      <Link href={"/tasks"}>Tasks</Link>
     </div>
   );
 };
