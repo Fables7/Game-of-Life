@@ -24,7 +24,7 @@ const tasks: Task[] = [
 const TasksPage = () => {
   return (
     <div className="flex justify-center p-5">
-      <Card className=" w-full">
+      <Card className="w-[1000px]">
         <CardHeader>
           <CardTitle>Tasks</CardTitle>
         </CardHeader>

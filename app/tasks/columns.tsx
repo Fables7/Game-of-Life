@@ -2,6 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
+import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 
 export type Task = {
   id: number;
@@ -17,20 +18,35 @@ export const columns: ColumnDef<Task>[] = [
   },
   {
     accessorKey: "time",
-    header: "Time",
+    header: "Time (min)",
   },
   {
     accessorKey: "points",
-    header: () => <div className="text-right">Points</div>,
+    header: ({ column }) => {
+      return (
+        <div className="text-right">
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Points
+            <ArrowUpDown className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+      );
+    },
     cell: ({ row }) => {
       return <div className="text-right">{row.getValue("points")}</div>;
     },
   },
   {
-    accessorKey: "redeem",
-    header: "Redeem",
+    id: "redeem",
     cell: ({ row }) => {
-      return <Button>Redeem</Button>;
+      return (
+        <div className="w-2">
+          <Button>Redeem</Button>
+        </div>
+      );
     },
   },
 ];
