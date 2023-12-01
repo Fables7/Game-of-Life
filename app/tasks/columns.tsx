@@ -13,46 +13,84 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+interface Tiers {
+  time: number;
+  points: number;
+}
+
 export type Task = {
   id: number;
   title: string;
-  time: 20 | 40 | 60 | "Static";
-  points: number;
+  tiers: Tiers[];
 };
 
 export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "title",
     header: "Title",
-  },
-  {
-    accessorKey: "time",
-    header: "Time (min)",
-  },
-  {
-    accessorKey: "points",
-    header: ({ column }) => {
+    cell: ({ row }) => {
       return (
-        <div className="text-right">
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            Points
-            <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
+        <div className="flex w-[200px] items-center">
+          <span>{row.getValue("title")}</span>
         </div>
       );
     },
+  },
+  {
+    accessorKey: "tiers",
+    header: "Time (min)",
     cell: ({ row }) => {
-      return <div className="text-right">{row.getValue("points")}</div>;
+      const tiers: Tiers[] = row.getValue("tiers");
+
+      return (
+        <div className="flex flex-col">
+          {tiers.map((tier) => {
+            return <span key={tier.time}>{tier.time}</span>;
+          })}
+        </div>
+      );
+    },
+  },
+  {
+    accessorKey: "tiers",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Points
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      const tiers: Tiers[] = row.getValue("tiers");
+      console.log(tiers[0].points);
+
+      return (
+        <div className="flex flex-col">
+          {tiers.map((tier) => {
+            return <span key={tier.points}>{tier.points}</span>;
+          })}
+        </div>
+      );
+    },
+    sortingFn: (rowA, rowB, colmnId) => {
+      const tiersA: Tiers[] = rowA.getValue(colmnId);
+      const tiersB: Tiers[] = rowB.getValue(colmnId);
+
+      const numA = tiersA[0].points;
+      const numB = tiersB[0].points;
+
+      return numA < numB ? 1 : numA > numB ? -1 : 0;
     },
   },
   {
     id: "redeem",
     cell: () => {
       return (
-        <div className="w-2">
+        <div>
           <Button>Redeem</Button>
         </div>
       );
@@ -61,10 +99,8 @@ export const columns: ColumnDef<Task>[] = [
   {
     id: "actions",
     cell: () => {
-
-
       return (
-        <div className="w-0">
+        <div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="h-8 w-8 p-0">
