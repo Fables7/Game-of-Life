@@ -9,10 +9,14 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { DataTable } from "./data-table";
-import { columns, Task } from "./columns";
+import { columns, Task, TimedTask } from "./columns";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import DailyTasks from "./components/DailyTasks";
+import Habits from "./components/HabitTasks";
+import ToDoTasks from "./components/ToDoTasks";
 
-const tasks: Task[] = [
+const timeTasks: TimedTask[] = [
   {
     id: 1,
     title: "Task 1",
@@ -21,6 +25,7 @@ const tasks: Task[] = [
       { time: 40, points: 150 },
       { time: 20, points: 40 },
     ],
+    category: "dailies",
   },
   {
     id: 2,
@@ -30,6 +35,7 @@ const tasks: Task[] = [
       { time: 40, points: 2 },
       { time: 20, points: 1 },
     ],
+    category: "dailies",
   },
   {
     id: 3,
@@ -39,6 +45,7 @@ const tasks: Task[] = [
       { time: 40, points: 300 },
       { time: 20, points: 100 },
     ],
+    category: "dailies",
   },
   {
     id: 4,
@@ -48,19 +55,35 @@ const tasks: Task[] = [
       { time: 40, points: 2 },
       { time: 20, points: 1 },
     ],
+    category: "dailies",
   },
 ];
 
+const Dailies = [];
+const Todos = [];
+
 const TasksPage = () => {
   return (
-    <div className="flex justify-center p-5">
-      <Card className="w-[1000px]">
+    <div className=" p-5 ">
+      <Card className="w-full">
         <CardHeader>
-          <CardTitle>Tasks</CardTitle>
+          <Tabs defaultValue="dailies" className="w-full ">
+            <TabsList>
+              <TabsTrigger value="dailies">Dailies</TabsTrigger>
+              <TabsTrigger value="habits">Habits</TabsTrigger>
+              <TabsTrigger value="to-do">To Do</TabsTrigger>
+            </TabsList>
+            <TabsContent value="dailies">
+              <DailyTasks tasks={timeTasks} />
+            </TabsContent>
+            <TabsContent value="habits">
+              <Habits tasks={timeTasks} />
+            </TabsContent>
+            <TabsContent value="to-do">
+              <ToDoTasks tasks={timeTasks} />
+            </TabsContent>
+          </Tabs>
         </CardHeader>
-        <CardContent>
-          <DataTable columns={columns} data={tasks} />
-        </CardContent>
       </Card>
     </div>
   );

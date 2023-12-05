@@ -13,18 +13,28 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-interface Tiers {
+type Tiers = {
   time: number;
   points: number;
-}
+};
 
-export type Task = {
+type BaseTask = {
   id: number;
   title: string;
+  category: string;
+};
+
+export type TimedTask = BaseTask & {
   tiers: Tiers[];
 };
 
-export const columns: ColumnDef<Task>[] = [
+export type Task = BaseTask & {
+  points: number;
+};
+
+export type TaskType = TimedTask | Task;
+
+export const columns: ColumnDef<TaskType>[] = [
   {
     accessorKey: "title",
     header: "Title",
