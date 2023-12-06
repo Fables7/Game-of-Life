@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import {
   Table,
   TableBody,
@@ -12,11 +11,14 @@ import {
 import {
   ColumnDef,
   SortingState,
-  useReactTable,
-  getCoreRowModel,
-  getSortedRowModel,
   flexRender,
+  getCoreRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
 } from "@tanstack/react-table";
+import * as React from "react";
+import { DataTablePagination } from "./DataTablePagination";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -32,6 +34,7 @@ export function DataTable<TData, TValue>({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
     state: {
@@ -39,6 +42,7 @@ export function DataTable<TData, TValue>({
     },
   });
   return (
+    <div>
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -89,5 +93,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
+      <DataTablePagination table={table} />
+    </div>
   );
 }

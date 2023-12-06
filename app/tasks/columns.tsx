@@ -40,7 +40,7 @@ const baseColumns: ColumnDef<BaseTask>[] = [
     header: "Title",
     cell: ({ row }) => {
       return (
-        <div className="flex w-[200px] items-center">
+        <div className="flex w-[700px] items-center">
           <span>{row.getValue("title")}</span>
         </div>
       );

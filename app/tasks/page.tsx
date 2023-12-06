@@ -6,7 +6,6 @@ import DailyTasks from "./components/DailyTasks";
 import Habits from "./components/HabitTasks";
 import ToDoTasks from "./components/ToDoTasks";
 
-
 const tasks: TaskType[] = [
   {
     id: 1,
@@ -55,6 +54,96 @@ const tasks: TaskType[] = [
     title: "Task 4",
     tiers: [
       { time: 60, points: 400 },
+      { time: 40, points: 2 },
+      { time: 20, points: 1 },
+    ],
+    category: "dailies",
+  },
+  {
+    id: 7,
+    title: "Task 5",
+    tiers: [
+      { time: 60, points: 500 },
+      { time: 40, points: 2 },
+      { time: 20, points: 1 },
+    ],
+    category: "dailies",
+  },
+  {
+    id: 8,
+    title: "Task 6",
+    tiers: [
+      { time: 60, points: 500 },
+      { time: 40, points: 2 },
+      { time: 20, points: 1 },
+    ],
+    category: "dailies",
+  },
+  {
+    id: 9,
+    title: "Task 7",
+    tiers: [
+      { time: 60, points: 500 },
+      { time: 40, points: 2 },
+      { time: 20, points: 1 },
+    ],
+    category: "dailies",
+  },
+  {
+    id: 10,
+    title: "Task 8",
+    tiers: [
+      { time: 60, points: 500 },
+      { time: 40, points: 2 },
+      { time: 20, points: 1 },
+    ],
+    category: "dailies",
+  },
+  {
+    id: 11,
+    title: "Task 9",
+    tiers: [
+      { time: 60, points: 500 },
+      { time: 40, points: 2 },
+      { time: 20, points: 1 },
+    ],
+    category: "dailies",
+  },
+  {
+    id: 12,
+    title: "Task 10",
+    tiers: [
+      { time: 60, points: 500 },
+      { time: 40, points: 2 },
+      { time: 20, points: 1 },
+    ],
+    category: "dailies",
+  },
+  {
+    id: 13,
+    title: "Task 11",
+    tiers: [
+      { time: 60, points: 500 },
+      { time: 40, points: 2 },
+      { time: 20, points: 1 },
+    ],
+    category: "dailies",
+  },
+  {
+    id: 14,
+    title: "Task 11",
+    tiers: [
+      { time: 60, points: 500 },
+      { time: 40, points: 2 },
+      { time: 20, points: 1 },
+    ],
+    category: "dailies",
+  },
+  {
+    id: 15,
+    title: "Task 15",
+    tiers: [
+      { time: 60, points: 500 },
       { time: 40, points: 2 },
       { time: 20, points: 1 },
     ],
