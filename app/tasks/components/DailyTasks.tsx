@@ -1,6 +1,5 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   TaskType,
@@ -9,6 +8,7 @@ import {
   timedTaskColumns,
 } from "../columns";
 import { DataTable } from "../data-table";
+import AddTaskButton from "./AddTaskButton";
 
 interface Props {
   tasks: {
@@ -18,12 +18,12 @@ interface Props {
 }
 
 const DailyTasks = ({ tasks }: Props) => {
-  console.log(tasks.static.length);
   return (
     <>
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
-          Dailies ({tasks.static.length}) <Button>+</Button>
+          Dailies ({tasks.static.length})
+          <AddTaskButton />
         </CardTitle>
       </CardHeader>
       <CardContent>
