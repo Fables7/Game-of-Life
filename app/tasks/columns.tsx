@@ -170,15 +170,17 @@ const staticTaskSpecificColumns: ColumnDef<Task>[] = [
 
 // Fix typing here
 export const timedTaskColumns: ColumnDef<any>[] = [
-  baseColumns[0], // Title
+  baseColumns[0], // Select
+  baseColumns[1], // Title
   ...timedTaskSpecificColumns,
-  baseColumns[1], // Redeem
-  baseColumns[2], // Actions
+  baseColumns[2], // Redeem
+  baseColumns[3], // Actions
 ];
 
 export const staticTaskColumns: ColumnDef<any>[] = [
-  baseColumns[0], // Title
+  baseColumns[0], // Select
+  baseColumns[1], // Title
   ...staticTaskSpecificColumns,
-  baseColumns[1], // Redeem
-  baseColumns[2], // Actions
+  baseColumns[2], // Redeem
+  baseColumns[3], // Actions
 ];

@@ -5,6 +5,7 @@ import { TaskType } from "./columns";
 import DailyTasks from "./components/DailyTasks";
 import Habits from "./components/HabitTasks";
 import ToDoTasks from "./components/ToDoTasks";
+import { Separator } from "@/components/ui/separator";
 
 const tasks: TaskType[] = [
   {
@@ -153,30 +154,28 @@ const tasks: TaskType[] = [
 
 const TasksPage = () => {
   const { dailyTasks, habitTasks, todoTasks } = useSplitData(tasks);
-  console.log(tasks);
   return (
-    <div className=" p-5 ">
-      <Card className="w-full">
-        <CardHeader>
-          <Tabs defaultValue="dailies">
-            <TabsList>
-              <TabsTrigger value="dailies">Dailies</TabsTrigger>
-              <TabsTrigger value="habits">Habits</TabsTrigger>
-              <TabsTrigger value="to-do">To Do</TabsTrigger>
-            </TabsList>
-            <TabsContent value="dailies">
-              <DailyTasks tasks={dailyTasks} />
-            </TabsContent>
-            <TabsContent value="habits">
-              <Habits tasks={habitTasks} />
-            </TabsContent>
-            <TabsContent value="to-do">
-              <ToDoTasks tasks={todoTasks} />
-            </TabsContent>
-          </Tabs>
-        </CardHeader>
-      </Card>
-    </div>
+    <Card className="w-full">
+      <CardHeader>
+        <Tabs defaultValue="dailies">
+          <TabsList>
+            <TabsTrigger value="dailies">Dailies</TabsTrigger>
+            <TabsTrigger value="habits">Habits</TabsTrigger>
+            <TabsTrigger value="to-do">To Do</TabsTrigger>
+          </TabsList>
+          <Separator className="mt-2" />
+          <TabsContent value="dailies">
+            <DailyTasks tasks={dailyTasks} />
+          </TabsContent>
+          <TabsContent value="habits">
+            <Habits tasks={habitTasks} />
+          </TabsContent>
+          <TabsContent value="to-do">
+            <ToDoTasks tasks={todoTasks} />
+          </TabsContent>
+        </Tabs>
+      </CardHeader>
+    </Card>
   );
 };
 

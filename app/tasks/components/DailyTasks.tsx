@@ -20,7 +20,7 @@ interface Props {
 const DailyTasks = ({ tasks }: Props) => {
   console.log(tasks.static.length);
   return (
-    <Card>
+    <>
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           Dailies ({tasks.static.length}) <Button>+</Button>
@@ -44,7 +44,7 @@ const DailyTasks = ({ tasks }: Props) => {
           </TabsContent>
         </Tabs>
       </CardContent>
-    </Card>
+    </>
   );
 };
 

@@ -21,18 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-         
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <SidebarContextProvider>
-            <div className="flex h-screen">
+            <div className="flex h-screen  overflow-hidden">
               <SideBar />
-              <div className=" w-full">
+              <div className="flex flex-col w-full h-full overflow-hidden ">
                 <NavBar />
-                <main>{children}</main>
+                <main className=" h-full overflow-auto p-5 ">{children}</main>
               </div>
             </div>
           </SidebarContextProvider>
