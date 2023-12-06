@@ -22,7 +22,7 @@ const ToDoTasks = ({ tasks }: Props) => {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
-          Dailies <Button>+</Button>
+          To Do <Button>+</Button>
         </CardTitle>
       </CardHeader>
       <CardContent>

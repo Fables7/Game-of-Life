@@ -6,7 +6,7 @@ import {
   TaskType,
   TimedTask,
   staticTaskColumns,
-  timedTaskColumns
+  timedTaskColumns,
 } from "../columns";
 import { DataTable } from "../data-table";
 
@@ -18,11 +18,12 @@ interface Props {
 }
 
 const DailyTasks = ({ tasks }: Props) => {
+  console.log(tasks.static.length);
   return (
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
-          Dailies <Button>+</Button>
+          Dailies ({tasks.static.length}) <Button>+</Button>
         </CardTitle>
       </CardHeader>
       <CardContent>

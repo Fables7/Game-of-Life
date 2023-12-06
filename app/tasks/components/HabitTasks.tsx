@@ -22,7 +22,7 @@ const HabitTasks = ({ tasks }: Props) => {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
-          Dailies <Button>+</Button>
+          Habits <Button>+</Button>
         </CardTitle>
       </CardHeader>
       <CardContent>

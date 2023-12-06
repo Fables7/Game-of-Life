@@ -102,6 +102,7 @@ const timedTaskSpecificColumns: ColumnDef<TimedTask>[] = [
   },
   {
     accessorKey: "tiers",
+    id: "points",
     header: ({ column }) => {
       return (
         <Button
@@ -114,7 +115,7 @@ const timedTaskSpecificColumns: ColumnDef<TimedTask>[] = [
       );
     },
     cell: ({ row }) => {
-      const tiers: Tiers[] = row.getValue("tiers");
+      const tiers: Tiers[] = row.getValue("points");
       if (tiers) {
         return (
           <div className="flex flex-col">
