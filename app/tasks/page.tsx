@@ -161,7 +161,7 @@ const TasksPage = () => {
           <TabsList>
             <TabsTrigger value="dailies">Dailies</TabsTrigger>
             <TabsTrigger value="habits">Habits</TabsTrigger>
-            <TabsTrigger value="to-do">To Do</TabsTrigger>
+            <TabsTrigger value="todo">To Do</TabsTrigger>
           </TabsList>
           <Separator className="mt-2" />
           <TabsContent value="dailies">
@@ -170,7 +170,7 @@ const TasksPage = () => {
           <TabsContent value="habits">
             <Habits tasks={habitTasks} />
           </TabsContent>
-          <TabsContent value="to-do">
+          <TabsContent value="todo">
             <ToDoTasks tasks={todoTasks} />
           </TabsContent>
         </Tabs>

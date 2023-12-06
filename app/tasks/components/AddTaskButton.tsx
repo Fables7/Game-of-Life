@@ -10,6 +10,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import React from "react";
+import AddTaskForm from "./AddTaskForm";
 
 const AddTaskButton = () => {
   return (
@@ -25,6 +26,7 @@ const AddTaskButton = () => {
             Here you can create a Static or Time based task
           </DialogDescription>
         </DialogHeader>
+        <AddTaskForm />
       </DialogContent>
     </Dialog>
   );
