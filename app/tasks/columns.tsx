@@ -164,7 +164,17 @@ const timedTaskSpecificColumns: ColumnDef<TimedTask>[] = [
 const staticTaskSpecificColumns: ColumnDef<Task>[] = [
   {
     accessorKey: "points",
-    header: "Points",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Points
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
   },
 ];
 
