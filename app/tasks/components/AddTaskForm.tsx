@@ -45,12 +45,14 @@ const StaticSchema = BaseSchema.extend({
 });
 
 const TimedSchema = BaseSchema.extend({
-  tiers: z.array(
-    z.object({
-      time: z.number().min(1).max(720),
-      points: z.number().min(1).max(9999),
-    })
-  ),
+  tiers: z
+    .array(
+      z.object({
+        time: z.number().min(1).max(720),
+        points: z.number().min(1).max(9999),
+      })
+    )
+    .max(5),
 });
 
 const formSchema = StaticSchema.or(TimedSchema);
@@ -124,7 +126,7 @@ const AddTaskForm = () => {
               name="tiers"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Tiers:</FormLabel>
+                  <FormLabel>Tiers (Max 5):</FormLabel>
                   {fields.map((field, index) => (
                     <div className="flex gap-4 items-end" key={field.id}>
                       <div>
@@ -163,6 +165,7 @@ const AddTaskForm = () => {
                   </p>
                   <Button
                     type="button"
+                    disabled={fields.length >= 5}
                     onClick={() => append({ time: 0, points: 0 })}
                   >
                     Create another tier
