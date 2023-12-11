@@ -6,6 +6,7 @@ import DailyTasks from "./components/DailyTasks";
 import Habits from "./components/HabitTasks";
 import ToDoTasks from "./components/ToDoTasks";
 import { Separator } from "@/components/ui/separator";
+import { Progress } from "@/components/ui/progress";
 
 const tasks: TaskType[] = [
   {
@@ -155,27 +156,30 @@ const tasks: TaskType[] = [
 const TasksPage = () => {
   const { dailyTasks, habitTasks, todoTasks } = useSplitData(tasks);
   return (
-    <Card className="w-full">
-      <CardHeader>
-        <Tabs defaultValue="dailies">
-          <TabsList>
-            <TabsTrigger value="dailies">Dailies</TabsTrigger>
-            <TabsTrigger value="habits">Habits</TabsTrigger>
-            <TabsTrigger value="todo">To Do</TabsTrigger>
-          </TabsList>
-          <Separator className="mt-2" />
-          <TabsContent value="dailies">
-            <DailyTasks tasks={dailyTasks} />
-          </TabsContent>
-          <TabsContent value="habits">
-            <Habits tasks={habitTasks} />
-          </TabsContent>
-          <TabsContent value="todo">
-            <ToDoTasks tasks={todoTasks} />
-          </TabsContent>
-        </Tabs>
-      </CardHeader>
-    </Card>
+    <div>
+      <Progress value={33} className="mb-4 shadow-md" />
+      <Card className="w-full">
+        <CardHeader>
+          <Tabs defaultValue="dailies">
+            <TabsList>
+              <TabsTrigger value="dailies">Dailies</TabsTrigger>
+              <TabsTrigger value="habits">Habits</TabsTrigger>
+              <TabsTrigger value="todo">To Do</TabsTrigger>
+            </TabsList>
+            <Separator className="mt-2" />
+            <TabsContent value="dailies">
+              <DailyTasks tasks={dailyTasks} />
+            </TabsContent>
+            <TabsContent value="habits">
+              <Habits tasks={habitTasks} />
+            </TabsContent>
+            <TabsContent value="todo">
+              <ToDoTasks tasks={todoTasks} />
+            </TabsContent>
+          </Tabs>
+        </CardHeader>
+      </Card>
+    </div>
   );
 };
 
