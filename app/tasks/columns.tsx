@@ -93,7 +93,9 @@ const baseColumns: ColumnDef<BaseTask>[] = [
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Edit</DropdownMenuItem>
-              <DropdownMenuItem>Delete</DropdownMenuItem>
+              <DropdownMenuItem className="text-red-500">
+                Delete
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
@@ -110,7 +112,7 @@ const timedTaskSpecificColumns: ColumnDef<TimedTask>[] = [
       const tiers: Tiers[] = row.getValue("tiers");
       if (tiers) {
         return (
-          <div className="flex flex-col">
+          <div className="flex flex-col pl-2">
             {tiers.map((tier) => {
               return <span key={tier.time}>{tier.time}</span>;
             })}
@@ -139,7 +141,7 @@ const timedTaskSpecificColumns: ColumnDef<TimedTask>[] = [
       const tiers: Tiers[] = row.getValue("points");
       if (tiers) {
         return (
-          <div className="flex flex-col">
+          <div className="flex flex-col  pl-5">
             {tiers.map((tier) => {
               return <span key={tier.points}>{tier.points}</span>;
             })}
@@ -174,6 +176,9 @@ const staticTaskSpecificColumns: ColumnDef<Task>[] = [
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
+    },
+    cell: ({ row }) => {
+      return <span className="ml-4">{row.getValue("points")}</span>;
     },
   },
 ];
