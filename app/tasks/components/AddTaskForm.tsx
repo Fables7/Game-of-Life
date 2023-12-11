@@ -62,7 +62,10 @@ const AddTaskForm = () => {
       title: "",
       category: "dailies",
       type: "static",
-      tiers: [{ time: 0, points: 0 }],
+      tiers: [
+        { time: 0, points: 0 },
+        { time: 1, points: 1 },
+      ],
     },
   });
 
@@ -77,6 +80,7 @@ const AddTaskForm = () => {
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {};
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -114,64 +118,59 @@ const AddTaskForm = () => {
           )}
         />
         {form.watch("type") === "timed" ? (
-          <FormField
-            control={form.control}
-            name="tiers"
-            render={({ field }) => {
-              return (
+          <>
+            <FormField
+              control={form.control}
+              name="tiers"
+              render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Tiers</FormLabel>
+                  <FormLabel>Tiers:</FormLabel>
                   {fields.map((field, index) => (
-                    <>
-                      <div className="flex gap-4" key={field.id}>
-                        <div>
-                          <Input
-                            placeholder="Enter Time"
-                            type="number"
-                            {...register(`tiers.${index}.time`, {
-                              valueAsNumber: true,
-                            })}
-                          />
-                          {errors.tiers && errors.tiers?.[index]?.time && (
-                            <FormMessage>
-                              {errors?.tiers[index]?.time?.message}
-                            </FormMessage>
-                          )}
-                        </div>
-                        <div>
-                          <Input
-                            placeholder="Enter Points"
-                            type="number"
-                            {...register(`tiers.${index}.points`, {
-                              valueAsNumber: true,
-                            })}
-                          />
-                          {errors.tiers?.[index]?.points && (
-                            <FormMessage>
-                              {errors?.tiers[index]?.points?.message}
-                            </FormMessage>
-                          )}
-                        </div>
-                        <Button
-                          disabled={fields.length <= 1}
-                          onClick={() => remove(index)}
-                        >
-                          Remove
-                        </Button>
+                    <div className="flex gap-4 items-end" key={field.id}>
+                      <div>
+                        {index === 0 && <FormLabel>Time</FormLabel>}
+                        <Input
+                          placeholder="Enter Time"
+                          type="number"
+                          {...register(`tiers.${index}.time`, {
+                            valueAsNumber: true,
+                          })}
+                        />
                       </div>
-                    </>
+                      <div>
+                        {index === 0 && <FormLabel>Points</FormLabel>}
+                        <Input
+                          placeholder="Enter Points"
+                          type="number"
+                          {...register(`tiers.${index}.points`, {
+                            valueAsNumber: true,
+                          })}
+                        />
+                      </div>
+
+                      <Button
+                        disabled={fields.length <= 1}
+                        onClick={() => remove(index)}
+                      >
+                        Remove
+                      </Button>
+                    </div>
                   ))}
+                  <p className="text-sm font-medium text-destructive">
+                    {errors.tiers && errors.tiers.length! > 0
+                      ? "Time and points have to be greater than 0."
+                      : null}
+                  </p>
                   <Button
                     type="button"
-                    // className="mt-4"
                     onClick={() => append({ time: 0, points: 0 })}
                   >
                     Create another tier
                   </Button>
                 </FormItem>
-              );
-            }}
-          />
+              )}
+            />
+          </>
         ) : (
           <FormField
             control={form.control}
