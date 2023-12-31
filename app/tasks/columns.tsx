@@ -13,6 +13,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Checkbox } from "@/components/ui/checkbox";
+import TaskButton from "./components/AddTaskButton";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogOverlay,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import TaskForm from "./components/TaskForm";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 type Tiers = {
   time: number;
@@ -82,22 +93,36 @@ const baseColumns: ColumnDef<BaseTask>[] = [
     cell: () => {
       return (
         <div>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className=" sr-only">Open menu</span>
-                <MoreHorizontal className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Edit</DropdownMenuItem>
-              <DropdownMenuItem className="text-red-500">
-                Delete
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <Dialog>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="h-8 w-8 p-0">
+                  <span className=" sr-only">Open menu</span>
+                  <MoreHorizontal className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DialogTrigger asChild className="w-full">
+                  <DropdownMenuItem>Edit</DropdownMenuItem>
+                </DialogTrigger>
+
+                <DropdownMenuItem className="text-red-500">
+                  Delete
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <DialogOverlay className="fixed inset-0 bg-black/50" />
+            <DialogContent className="p-4">
+              <ScrollArea className="h-[500px]  p-4">
+                <DialogHeader>
+                  <DialogTitle>Edit Task</DialogTitle>
+                </DialogHeader>
+                <TaskForm />
+              </ScrollArea>
+            </DialogContent>
+          </Dialog>
         </div>
       );
     },

@@ -57,7 +57,7 @@ const TimedSchema = BaseSchema.extend({
 
 const formSchema = StaticSchema.or(TimedSchema);
 
-const AddTaskForm = () => {
+const TaskForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -196,4 +196,4 @@ const AddTaskForm = () => {
   );
 };
 
-export default AddTaskForm;
+export default TaskForm;

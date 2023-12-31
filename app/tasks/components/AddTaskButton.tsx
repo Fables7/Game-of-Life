@@ -10,7 +10,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import React from "react";
-import AddTaskForm from "./AddTaskForm";
+import TaskForm from "./TaskForm";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 const AddTaskButton = () => {
@@ -28,7 +28,7 @@ const AddTaskButton = () => {
               Here you can create a Static or Time based task
             </DialogDescription>
           </DialogHeader>
-          <AddTaskForm />
+          <TaskForm />
         </ScrollArea>
       </DialogContent>
     </Dialog>
