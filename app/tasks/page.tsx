@@ -1,13 +1,11 @@
 import { Card, CardHeader } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import useSplitData from "@/hooks/useSplitData";
 import { TaskType } from "./columns";
 import DailyTasks from "./components/DailyTasks";
 import Habits from "./components/HabitTasks";
 import ToDoTasks from "./components/ToDoTasks";
-import { Separator } from "@/components/ui/separator";
-import { Progress } from "@/components/ui/progress";
-import XpBar from "@/components/XpBar";
 
 const tasks: TaskType[] = [
   {
@@ -158,7 +156,7 @@ const TasksPage = () => {
   const { dailyTasks, habitTasks, todoTasks } = useSplitData(tasks);
   return (
     <div>
-      <XpBar />
+      {/* <XpBar /> */}
       <Card className="w-full">
         <CardHeader>
           <Tabs defaultValue="dailies">
