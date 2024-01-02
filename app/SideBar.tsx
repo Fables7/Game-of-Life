@@ -9,13 +9,15 @@ const SideBar = () => {
   return (
     <div
       className={classNames({
-        " transition-[width] bg-[var(--white)] dark:bg-[var(--dark-gray)]":
+        " transition-[width] bg-[var(--white)] dark:bg-[var(--dark-gray)] flex flex-col":
           true,
         "w-[300px]": sidebarOpen,
         "w-0": !sidebarOpen,
       })}
     >
       <Link href={"/tasks"}>Tasks</Link>
+      <Link href={"/dashboard"}>Dashboard</Link>
+      <Link href={"/shop"}>Shop</Link>
     </div>
   );
 };
