@@ -30,6 +30,7 @@ import {
   ArrowRightIcon,
   ArrowUpIcon,
 } from "@radix-ui/react-icons";
+import RedeemButton from "./components/RedeemButton";
 
 const priorities = [
   {
@@ -49,7 +50,7 @@ const priorities = [
   },
 ];
 
-type Tiers = {
+export type Tiers = {
   time: number;
   points: number;
 };
@@ -128,16 +129,7 @@ const baseColumns: ColumnDef<BaseTask>[] = [
       return value.includes(row.getValue(id));
     },
   },
-  {
-    id: "redeem",
-    cell: () => {
-      return (
-        <div>
-          <Button>Redeem</Button>
-        </div>
-      );
-    },
-  },
+
   {
     id: "actions",
     cell: () => {
@@ -237,6 +229,13 @@ const timedTaskSpecificColumns: ColumnDef<TimedTask>[] = [
       return numA < numB ? 1 : numA > numB ? -1 : 0;
     },
   },
+  {
+    id: "redeem",
+    cell: ({ row }) => {
+      const tiers: Tiers[] = row.getValue("points");
+      return <RedeemButton tiers={tiers} points={row.getValue("points")} />;
+    },
+  },
 ];
 
 const staticTaskSpecificColumns: ColumnDef<Task>[] = [
@@ -257,6 +256,12 @@ const staticTaskSpecificColumns: ColumnDef<Task>[] = [
       return <span className="ml-4">{row.getValue("points")}</span>;
     },
   },
+  {
+    id: "redeem",
+    cell: ({ row }) => {
+      return <RedeemButton points={row.getValue("points")} />;
+    },
+  },
 ];
 
 // Fix typing here
@@ -265,8 +270,7 @@ export const timedTaskColumns: ColumnDef<any>[] = [
   baseColumns[1], // Title
   baseColumns[2], // Priority
   ...timedTaskSpecificColumns,
-  baseColumns[3], // Redeem
-  baseColumns[4], // Actions
+  baseColumns[3], // Actions
 ];
 
 export const staticTaskColumns: ColumnDef<any>[] = [
@@ -274,6 +278,5 @@ export const staticTaskColumns: ColumnDef<any>[] = [
   baseColumns[1], // Title
   baseColumns[2], // Priority
   ...staticTaskSpecificColumns,
-  baseColumns[3], // Redeem
-  baseColumns[4], // Actions
+  baseColumns[3], // Actions
 ];

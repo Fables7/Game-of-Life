@@ -4,32 +4,11 @@ import { Input } from "@/components/ui/input";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 import { Button } from "@/components/ui/button";
 import {
-  CircleIcon,
-  StopwatchIcon,
-  CheckCircledIcon,
   ArrowDownIcon,
   ArrowRightIcon,
   ArrowUpIcon,
   Cross2Icon,
 } from "@radix-ui/react-icons";
-
-const statuses = [
-  {
-    value: "todo",
-    label: "Todo",
-    icon: CircleIcon,
-  },
-  {
-    value: "in progress",
-    label: "In Progress",
-    icon: StopwatchIcon,
-  },
-  {
-    value: "done",
-    label: "Done",
-    icon: CheckCircledIcon,
-  },
-];
 
 const priorities = [
   {
@@ -67,13 +46,7 @@ export function DataTableToolbar<TData>({
         }
         className="h-8 w-[150px]"
       />
-      {table.getColumn("status") && (
-        <DataTableFacetedFilter
-          column={table.getColumn("status")}
-          title="Status"
-          options={statuses}
-        />
-      )}
+
       {table.getColumn("priority") && (
         <DataTableFacetedFilter
           column={table.getColumn("priority")}
