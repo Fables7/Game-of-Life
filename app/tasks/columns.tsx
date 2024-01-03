@@ -34,6 +34,7 @@ type BaseTask = {
   id: number;
   title: string;
   category: string;
+  priority: "low" | "medium" | "high";
 };
 
 export type TimedTask = BaseTask & {
@@ -77,6 +78,10 @@ const baseColumns: ColumnDef<BaseTask>[] = [
         </div>
       );
     },
+  },
+  {
+    accessorKey: "priority",
+    header: "Priority",
   },
   {
     id: "redeem",
@@ -148,6 +153,7 @@ const timedTaskSpecificColumns: ColumnDef<TimedTask>[] = [
       }
     },
   },
+
   {
     accessorKey: "tiers",
     id: "points",
@@ -212,15 +218,17 @@ const staticTaskSpecificColumns: ColumnDef<Task>[] = [
 export const timedTaskColumns: ColumnDef<any>[] = [
   baseColumns[0], // Select
   baseColumns[1], // Title
+  baseColumns[2], // Priority
   ...timedTaskSpecificColumns,
-  baseColumns[2], // Redeem
-  baseColumns[3], // Actions
+  baseColumns[3], // Redeem
+  baseColumns[4], // Actions
 ];
 
 export const staticTaskColumns: ColumnDef<any>[] = [
   baseColumns[0], // Select
   baseColumns[1], // Title
+  baseColumns[2], // Priority
   ...staticTaskSpecificColumns,
-  baseColumns[2], // Redeem
-  baseColumns[3], // Actions
+  baseColumns[3], // Redeem
+  baseColumns[4], // Actions
 ];

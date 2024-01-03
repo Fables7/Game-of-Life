@@ -13,6 +13,7 @@ const tasks: TaskType[] = [
     title: "Task 1",
     points: 300,
     category: "dailies",
+    priority: "low",
   },
   {
     id: 2,
@@ -23,12 +24,14 @@ const tasks: TaskType[] = [
       { time: 20, points: 1 },
     ],
     category: "dailies",
+    priority: "medium",
   },
   {
     id: 3,
     title: "Task 3",
     points: 400,
     category: "habits",
+    priority: "high",
   },
   {
     id: 4,
@@ -39,6 +42,7 @@ const tasks: TaskType[] = [
       { time: 20, points: 1 },
     ],
     category: "habits",
+    priority: "low",
   },
   {
     id: 5,
@@ -49,6 +53,7 @@ const tasks: TaskType[] = [
       { time: 20, points: 1 },
     ],
     category: "dailies",
+    priority: "low",
   },
   {
     id: 6,
@@ -59,6 +64,7 @@ const tasks: TaskType[] = [
       { time: 20, points: 1 },
     ],
     category: "dailies",
+    priority: "low",
   },
   {
     id: 7,
@@ -69,6 +75,7 @@ const tasks: TaskType[] = [
       { time: 20, points: 1 },
     ],
     category: "dailies",
+    priority: "low",
   },
   {
     id: 8,
@@ -79,6 +86,7 @@ const tasks: TaskType[] = [
       { time: 20, points: 1 },
     ],
     category: "dailies",
+    priority: "high",
   },
   {
     id: 9,
@@ -89,6 +97,7 @@ const tasks: TaskType[] = [
       { time: 20, points: 1 },
     ],
     category: "dailies",
+    priority: "medium",
   },
   {
     id: 10,
@@ -99,6 +108,7 @@ const tasks: TaskType[] = [
       { time: 20, points: 1 },
     ],
     category: "dailies",
+    priority: "medium",
   },
   {
     id: 11,
@@ -109,6 +119,7 @@ const tasks: TaskType[] = [
       { time: 20, points: 1 },
     ],
     category: "dailies",
+    priority: "medium",
   },
   {
     id: 12,
@@ -119,6 +130,7 @@ const tasks: TaskType[] = [
       { time: 20, points: 1 },
     ],
     category: "dailies",
+    priority: "medium",
   },
   {
     id: 13,
@@ -129,6 +141,7 @@ const tasks: TaskType[] = [
       { time: 20, points: 1 },
     ],
     category: "dailies",
+    priority: "high",
   },
   {
     id: 14,
@@ -139,6 +152,7 @@ const tasks: TaskType[] = [
       { time: 20, points: 1 },
     ],
     category: "dailies",
+    priority: "high",
   },
   {
     id: 15,
@@ -149,6 +163,7 @@ const tasks: TaskType[] = [
       { time: 20, points: 1 },
     ],
     category: "dailies",
+    priority: "high",
   },
 ];
 
