@@ -6,6 +6,7 @@ import { TaskType } from "./columns";
 import DailyTasks from "./components/DailyTasks";
 import Habits from "./components/HabitTasks";
 import ToDoTasks from "./components/ToDoTasks";
+import PointsDisplay from "@/components/PointsDisplay";
 
 const tasks: TaskType[] = [
   {
@@ -169,6 +170,7 @@ const tasks: TaskType[] = [
 
 const TasksPage = () => {
   const { dailyTasks, habitTasks, todoTasks } = useSplitData(tasks);
+
   return (
     <div>
       {/* <XpBar /> */}
@@ -181,7 +183,7 @@ const TasksPage = () => {
                 <TabsTrigger value="habits">Habits</TabsTrigger>
                 <TabsTrigger value="todo">To Do</TabsTrigger>
               </TabsList>
-              <h1>1000 pts</h1>
+              <PointsDisplay />
             </div>
             <Separator className="mt-2" />
             <TabsContent value="dailies">

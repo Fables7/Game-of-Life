@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "./NavBar";
 import { ThemeProvider } from "@/providers/themeProvider";
 import SidebarContextProvider from "@/context/sidebar-context";
+import ReduxProvider from "@/providers/reduxProvider";
 import SideBar from "./SideBar";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,15 +23,17 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <SidebarContextProvider>
-            <div className="flex h-screen  overflow-hidden">
-              <SideBar />
-              <div className="flex flex-col w-full h-full overflow-hidden ">
-                <NavBar />
-                <main className=" h-full overflow-auto p-5 ">{children}</main>
+          <ReduxProvider>
+            <SidebarContextProvider>
+              <div className="flex h-screen  overflow-hidden">
+                <SideBar />
+                <div className="flex flex-col w-full h-full overflow-hidden ">
+                  <NavBar />
+                  <main className=" h-full overflow-auto p-5 ">{children}</main>
+                </div>
               </div>
-            </div>
-          </SidebarContextProvider>
+            </SidebarContextProvider>
+          </ReduxProvider>
         </ThemeProvider>
       </body>
     </html>
