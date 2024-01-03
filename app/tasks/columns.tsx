@@ -25,6 +25,30 @@ import {
 import TaskForm from "./components/TaskForm";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
+import {
+  ArrowDownIcon,
+  ArrowRightIcon,
+  ArrowUpIcon,
+} from "@radix-ui/react-icons";
+
+const priorities = [
+  {
+    label: "Low",
+    value: "low",
+    icon: ArrowDownIcon,
+  },
+  {
+    label: "Medium",
+    value: "medium",
+    icon: ArrowRightIcon,
+  },
+  {
+    label: "High",
+    value: "high",
+    icon: ArrowUpIcon,
+  },
+];
+
 type Tiers = {
   time: number;
   points: number;
@@ -82,6 +106,27 @@ const baseColumns: ColumnDef<BaseTask>[] = [
   {
     accessorKey: "priority",
     header: "Priority",
+    cell: ({ row }) => {
+      const priority = priorities.find(
+        (priority) => priority.value === row.getValue("priority")
+      );
+
+      if (!priority) {
+        return null;
+      }
+
+      return (
+        <div className="flex items-center">
+          {priority.icon && (
+            <priority.icon className="mr-2 h-4 w-4 text-muted-foreground" />
+          )}
+          <span>{priority.label}</span>
+        </div>
+      );
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
   },
   {
     id: "redeem",
