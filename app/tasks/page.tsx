@@ -175,11 +175,14 @@ const TasksPage = () => {
       <Card className="w-full">
         <CardHeader>
           <Tabs defaultValue="dailies">
-            <TabsList>
-              <TabsTrigger value="dailies">Dailies</TabsTrigger>
-              <TabsTrigger value="habits">Habits</TabsTrigger>
-              <TabsTrigger value="todo">To Do</TabsTrigger>
-            </TabsList>
+            <div className="flex items-center justify-between">
+              <TabsList>
+                <TabsTrigger value="dailies">Dailies</TabsTrigger>
+                <TabsTrigger value="habits">Habits</TabsTrigger>
+                <TabsTrigger value="todo">To Do</TabsTrigger>
+              </TabsList>
+              <h1>1000 pts</h1>
+            </div>
             <Separator className="mt-2" />
             <TabsContent value="dailies">
               <DailyTasks tasks={dailyTasks} />
