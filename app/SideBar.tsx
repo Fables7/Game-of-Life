@@ -9,7 +9,7 @@ const SideBar = () => {
   return (
     <div
       className={classNames({
-        " transition-[width] bg-[var(--white)] dark:bg-[var(--dark-gray)] flex flex-col":
+        " transition-[width] bg-[var(--white)] dark:bg-[var(--dark-gray)] flex flex-col   overflow-hidden":
           true,
         "w-[300px]": sidebarOpen,
         "w-0": !sidebarOpen,
