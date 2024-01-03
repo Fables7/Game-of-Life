@@ -37,7 +37,7 @@ export function DataTableToolbar<TData>({
   const isFiltered = table.getState().columnFilters.length > 0;
 
   return (
-    <div className="flex flex-1 items-center space-x-2">
+    <div className="flex flex-1 items-center space-x-2 mb-2">
       <Input
         placeholder="Filter tasks..."
         value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
