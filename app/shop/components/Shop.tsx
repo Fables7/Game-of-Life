@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import ShopItem from "./ShopItem";
 import Cart from "./Cart";
 import usePoints from "@/hooks/usePoints";
+import { useDispatch } from "react-redux";
+import { subtractPoints } from "@/store/userPoints";
 
 const Items = [
   {
@@ -67,10 +69,14 @@ const Shop = () => {
   const { userPoints } = usePoints();
   const [remainingPoints, setRemainingPoints] = React.useState(userPoints);
   const [cart, setCart] = React.useState<CartProps[]>([]);
+
+  const dispatch = useDispatch();
+
   const addToCart = (title: string, price: number) => {
     setCart((prev) => [...prev, { title, price }]);
     setRemainingPoints((prev) => prev - price);
   };
+
   const removeFromCart = (index: number, points: number) => {
     setCart((prev) => {
       const newCart = [...prev];
@@ -79,6 +85,12 @@ const Shop = () => {
     });
     setRemainingPoints((prev) => prev + points);
   };
+
+  const checkout = () => {
+    setCart([]);
+    dispatch(subtractPoints(userPoints - remainingPoints));
+  };
+
   return (
     <div className="flex justify-between">
       <div className="w-full">
@@ -94,6 +106,7 @@ const Shop = () => {
         remainingPoints={remainingPoints}
         totalCost={userPoints - remainingPoints}
         removeFromCart={removeFromCart}
+        checkout={checkout}
       />
     </div>
   );

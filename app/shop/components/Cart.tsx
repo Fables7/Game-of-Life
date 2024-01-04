@@ -10,6 +10,7 @@ interface CartProps {
   remainingPoints: number;
   removeFromCart: (index: number, price: number) => void;
   totalCost: number;
+  checkout: () => void;
 }
 
 interface CartItemProps {
@@ -32,6 +33,7 @@ const Cart = ({
   remainingPoints,
   removeFromCart,
   totalCost,
+  checkout,
 }: CartProps) => {
   return (
     <Card className=" max-w-md w-full">
@@ -51,7 +53,10 @@ const Cart = ({
           </div>
         ))}
         <div className="flex items-center gap-4">
-          <Button disabled={cart.length === 0 || remainingPoints < 0}>
+          <Button
+            onClick={checkout}
+            disabled={cart.length === 0 || remainingPoints < 0}
+          >
             Checkout
           </Button>
           <h1>{totalCost} pts</h1>
