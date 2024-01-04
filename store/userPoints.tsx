@@ -11,6 +11,7 @@ export const userPointsSlice = createSlice({
   name: "userPoints",
   initialState: {
     points: 0,
+    
   },
   reducers: {
     initialisePoints: (state, action) => {

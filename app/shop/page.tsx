@@ -1,13 +1,14 @@
-import React from "react";
 import PointsDisplay from "@/components/PointsDisplay";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import Shop from "./components/Shop";
+
+
 
 const ShopPage = () => {
   return (
@@ -21,7 +22,7 @@ const ShopPage = () => {
           <CardDescription>Buy items with your points!</CardDescription>
         </CardHeader>
         <CardContent>
-          <Button>Create Item</Button>
+          <Shop />
         </CardContent>
       </Card>
     </div>
